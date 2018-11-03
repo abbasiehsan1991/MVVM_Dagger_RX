@@ -17,7 +17,7 @@ import org.junit.Assert.*
 class ExampleInstrumentedTest {
     @Test
     fun useAppContext() {
-        // Context of the app under test.
+        // ContextModule of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
         assertEquals("codenevisha.ir.mvvmwithdagger", appContext.packageName)
     }

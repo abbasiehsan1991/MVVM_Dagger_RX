@@ -1,0 +1,857 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 111149056 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2640), pid=13449, tid=0x00007f57d1cfc700
+#
+# JRE version: OpenJDK Runtime Environment (8.0_152-b06) (build 1.8.0_152-release-1136-b06)
+# Java VM: OpenJDK 64-Bit Server VM (25.152-b06 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f57e407a000):  VMThread [stack: 0x00007f57d1bfd000,0x00007f57d1cfd000] [id=13456]
+
+Stack: [0x00007f57d1bfd000,0x00007f57d1cfd000],  sp=0x00007f57d1cfb4f0,  free space=1017k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xa70d3f]  VMError::report_and_die()+0x2af
+V  [libjvm.so+0x4c7207]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0x67
+V  [libjvm.so+0x8b5b70]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0x100
+V  [libjvm.so+0x8b078f]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x1f
+V  [libjvm.so+0x92e446]  PSVirtualSpace::expand_by(unsigned long)+0x56
+V  [libjvm.so+0x91d7eb]  PSOldGen::expand_by(unsigned long) [clone .part.28]+0x1b
+V  [libjvm.so+0x91d9a8]  PSOldGen::expand(unsigned long) [clone .part.29]+0xa8
+V  [libjvm.so+0x91e551]  PSOldGen::resize(unsigned long)+0xe1
+V  [libjvm.so+0x924606]  PSParallelCompact::invoke_no_policy(bool) [clone .part.118]+0x9e6
+V  [libjvm.so+0x92c3d5]  PSScavenge::invoke()+0x215
+V  [libjvm.so+0x8dbda8]  ParallelScavengeHeap::failed_mem_allocate(unsigned long)+0x68
+V  [libjvm.so+0xa72873]  VM_ParallelGCFailedAllocation::doit()+0x93
+V  [libjvm.so+0xa778a6]  VM_Operation::evaluate()+0x46
+V  [libjvm.so+0xa75102]  VMThread::evaluate_operation(VM_Operation*) [clone .constprop.31]+0xa2
+V  [libjvm.so+0xa7652b]  VMThread::loop()+0x37b
+V  [libjvm.so+0xa768d8]  VMThread::run()+0x78
+V  [libjvm.so+0x8b3332]  java_start(Thread*)+0x102
+
+VM_Operation (0x00007f57d0506b40): ParallelGCFailedAllocation, mode: safepoint, requested by thread 0x00007f578c001800
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007f5784011000 JavaThread "RMI RenewClean-[127.0.0.1:45673,org.jetbrains.kotlin.daemon.common.LoopbackNetworkInterface$ClientLoopbackSocketFactory@11fd8161]" daemon [_thread_blocked, id=13657, stack(0x00007f57c3dfe000,0x00007f57c3eff000)]
+  0x00007f578c001800 JavaThread "RMI TCP Connection(6)-127.0.0.1" daemon [_thread_blocked, id=13656, stack(0x00007f57d040b000,0x00007f57d050c000)]
+  0x00007f5780013800 JavaThread "RMI RenewClean-[127.0.0.1:45673,org.jetbrains.kotlin.daemon.common.LoopbackNetworkInterface$ClientLoopbackSocketFactory@6e73830c]" daemon [_thread_blocked, id=13652, stack(0x00007f57c8cfe000,0x00007f57c8dff000)]
+  0x00007f578c003000 JavaThread "RMI TCP Connection(idle)" daemon [_thread_blocked, id=13649, stack(0x00007f57d0108000,0x00007f57d0209000)]
+  0x00007f578c005000 JavaThread "RMI TCP Connection(idle)" daemon [_thread_blocked, id=13528, stack(0x00007f57c3eff000,0x00007f57c4000000)]
+  0x00007f5780011800 JavaThread "RMI Scheduler(0)" daemon [_thread_blocked, id=13491, stack(0x00007f57d0007000,0x00007f57d0108000)]
+  0x00007f57e400c000 JavaThread "DestroyJavaVM" [_thread_blocked, id=13451, stack(0x00007f57ed644000,0x00007f57ed744000)]
+  0x00007f57e430c000 JavaThread "GC Daemon" daemon [_thread_blocked, id=13489, stack(0x00007f57d0209000,0x00007f57d030a000)]
+  0x00007f57e4305000 JavaThread "RMI Reaper" [_thread_blocked, id=13488, stack(0x00007f57d030a000,0x00007f57d040b000)]
+  0x00007f57e42f8800 JavaThread "Timer-0" daemon [_thread_blocked, id=13486, stack(0x00007f57d050c000,0x00007f57d060d000)]
+  0x00007f57e42f5000 JavaThread "RMI TCP Accept-17766" daemon [_thread_in_native, id=13485, stack(0x00007f57d060d000,0x00007f57d070e000)]
+  0x00007f57e40ca800 JavaThread "Service Thread" daemon [_thread_blocked, id=13465, stack(0x00007f57d1093000,0x00007f57d1194000)]
+  0x00007f57e40bf000 JavaThread "C1 CompilerThread2" daemon [_thread_blocked, id=13464, stack(0x00007f57d1195000,0x00007f57d1295000)]
+  0x00007f57e40bd800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=13463, stack(0x00007f57d1296000,0x00007f57d1396000)]
+  0x00007f57e40ba800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=13462, stack(0x00007f57d1397000,0x00007f57d1497000)]
+  0x00007f57e40b9000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=13461, stack(0x00007f57d1497000,0x00007f57d1598000)]
+  0x00007f57e4086000 JavaThread "Finalizer" daemon [_thread_blocked, id=13460, stack(0x00007f57d19fa000,0x00007f57d1afb000)]
+  0x00007f57e4081800 JavaThread "Reference Handler" daemon [_thread_blocked, id=13457, stack(0x00007f57d1afb000,0x00007f57d1bfc000)]
+
+Other Threads:
+=>0x00007f57e407a000 VMThread [stack: 0x00007f57d1bfd000,0x00007f57d1cfd000] [id=13456]
+  0x00007f57e40cd000 WatcherThread [stack: 0x00007f57d0f93000,0x00007f57d1093000] [id=13466]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007f57e40084b0] ExpandHeap_lock - owner thread: 0x00007f57e407a000
+[0x00007f57e4008b30] Threads_lock - owner thread: 0x00007f57e407a000
+[0x00007f57e4009030] Heap_lock - owner thread: 0x00007f578c001800
+
+Heap:
+ PSYoungGen      total 260608K, used 0K [0x00000000e0000000, 0x00000000f9c00000, 0x0000000100000000)
+  eden space 186368K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000eb600000)
+  from space 74240K, 0% used [0x00000000f1880000,0x00000000f1880000,0x00000000f6100000)
+  to   space 100864K, 0% used [0x00000000eb600000,0x00000000eb600000,0x00000000f1880000)
+ ParOldGen       total 136192K, used 128080K [0x00000000a0000000, 0x00000000a8500000, 0x00000000e0000000)
+  object space 136192K, 94% used [0x00000000a0000000,0x00000000a7d14118,0x00000000a8500000)
+ Metaspace       used 81905K, capacity 83868K, committed 84136K, reserved 1122304K
+  class space    used 9944K, capacity 10395K, committed 10408K, reserved 1048576K
+
+Card table byte_map: [0x00007f57ea0ab000,0x00007f57ea3ac000] byte_map_base: 0x00007f57e9bab000
+
+Marking Bits: (ParMarkBitMap*) 0x00007f57ecaed160
+ Begin Bits: [0x00007f57d2000000, 0x00007f57d3800000)
+ End Bits:   [0x00007f57d3800000, 0x00007f57d5000000)
+
+Polling page: 0x00007f57ed75c000
+
+CodeCache: size=245760Kb used=38375Kb max_used=38387Kb free=207384Kb
+ bounds [0x00007f57d5000000, 0x00007f57d75b0000, 0x00007f57e4000000]
+ total_blobs=11897 nmethods=11321 adapters=488
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 128.564 Thread 0x00007f57e40ba800 13064   !   4       java.io.ObjectInputStream::readObject0 (566 bytes)
+Event: 128.564 Thread 0x00007f57e40bf000 13066       3       java.lang.Math::max (46 bytes)
+Event: 128.564 Thread 0x00007f57e40bf000 nmethod 13066 0x00007f57d759c2d0 code [0x00007f57d759c440, 0x00007f57d759c790]
+Event: 128.565 Thread 0x00007f57e40bf000 13067       3       com.sun.org.apache.xerces.internal.impl.XMLScanner::setFeature (32 bytes)
+Event: 128.566 Thread 0x00007f57e40bf000 nmethod 13067 0x00007f57d75a4590 code [0x00007f57d75a4720, 0x00007f57d75a4a98]
+Event: 128.566 Thread 0x00007f57e40bf000 13068       3       com.sun.org.apache.xerces.internal.impl.XMLScanner::setProperty (94 bytes)
+Event: 128.566 Thread 0x00007f57e40bd800 nmethod 13063 0x00007f57d75a2850 code [0x00007f57d75a29c0, 0x00007f57d75a2df8]
+Event: 128.566 Thread 0x00007f57e40bd800 13065       4       java.io.ObjectInputStream$HandleTable::markDependency (171 bytes)
+Event: 128.566 Thread 0x00007f57e40bf000 nmethod 13068 0x00007f57d75a3310 code [0x00007f57d75a3520, 0x00007f57d75a4258]
+Event: 128.568 Thread 0x00007f57e40bd800 nmethod 13065 0x00007f57d75a2190 code [0x00007f57d75a2320, 0x00007f57d75a25a8]
+
+GC Heap History (10 events):
+Event: 103.838 GC heap after
+Heap after GC invocations=16 (full 4):
+ PSYoungGen      total 159232K, used 0K [0x00000000e0000000, 0x00000000ec080000, 0x0000000100000000)
+  eden space 124416K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000e7980000)
+  from space 34816K, 0% used [0x00000000e9e80000,0x00000000e9e80000,0x00000000ec080000)
+  to   space 36352K, 0% used [0x00000000e7980000,0x00000000e7980000,0x00000000e9d00000)
+ ParOldGen       total 132608K, used 43149K [0x00000000a0000000, 0x00000000a8180000, 0x00000000e0000000)
+  object space 132608K, 32% used [0x00000000a0000000,0x00000000a2a237a8,0x00000000a8180000)
+ Metaspace       used 57855K, capacity 58936K, committed 59160K, reserved 1101824K
+  class space    used 7024K, capacity 7315K, committed 7336K, reserved 1048576K
+}
+Event: 109.547 GC heap before
+{Heap before GC invocations=17 (full 4):
+ PSYoungGen      total 159232K, used 124416K [0x00000000e0000000, 0x00000000ec080000, 0x0000000100000000)
+  eden space 124416K, 100% used [0x00000000e0000000,0x00000000e7980000,0x00000000e7980000)
+  from space 34816K, 0% used [0x00000000e9e80000,0x00000000e9e80000,0x00000000ec080000)
+  to   space 36352K, 0% used [0x00000000e7980000,0x00000000e7980000,0x00000000e9d00000)
+ ParOldGen       total 132608K, used 43149K [0x00000000a0000000, 0x00000000a8180000, 0x00000000e0000000)
+  object space 132608K, 32% used [0x00000000a0000000,0x00000000a2a237a8,0x00000000a8180000)
+ Metaspace       used 60937K, capacity 62114K, committed 62376K, reserved 1103872K
+  class space    used 7250K, capacity 7560K, committed 7592K, reserved 1048576K
+Event: 109.570 GC heap after
+Heap after GC invocations=17 (full 4):
+ PSYoungGen      total 160768K, used 30935K [0x00000000e0000000, 0x00000000ee300000, 0x0000000100000000)
+  eden space 124416K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000e7980000)
+  from space 36352K, 85% used [0x00000000e7980000,0x00000000e97b5cf0,0x00000000e9d00000)
+  to   space 39936K, 0% used [0x00000000ebc00000,0x00000000ebc00000,0x00000000ee300000)
+ ParOldGen       total 132608K, used 43157K [0x00000000a0000000, 0x00000000a8180000, 0x00000000e0000000)
+  object space 132608K, 32% used [0x00000000a0000000,0x00000000a2a257a8,0x00000000a8180000)
+ Metaspace       used 60937K, capacity 62114K, committed 62376K, reserved 1103872K
+  class space    used 7250K, capacity 7560K, committed 7592K, reserved 1048576K
+}
+Event: 113.741 GC heap before
+{Heap before GC invocations=18 (full 4):
+ PSYoungGen      total 160768K, used 155351K [0x00000000e0000000, 0x00000000ee300000, 0x0000000100000000)
+  eden space 124416K, 100% used [0x00000000e0000000,0x00000000e7980000,0x00000000e7980000)
+  from space 36352K, 85% used [0x00000000e7980000,0x00000000e97b5cf0,0x00000000e9d00000)
+  to   space 39936K, 0% used [0x00000000ebc00000,0x00000000ebc00000,0x00000000ee300000)
+ ParOldGen       total 132608K, used 43157K [0x00000000a0000000, 0x00000000a8180000, 0x00000000e0000000)
+  object space 132608K, 32% used [0x00000000a0000000,0x00000000a2a257a8,0x00000000a8180000)
+ Metaspace       used 74382K, capacity 75810K, committed 75944K, reserved 1116160K
+  class space    used 9020K, capacity 9366K, committed 9384K, reserved 1048576K
+Event: 114.018 GC heap after
+Heap after GC invocations=18 (full 4):
+ PSYoungGen      total 183296K, used 39921K [0x00000000e0000000, 0x00000000f0080000, 0x0000000100000000)
+  eden space 143360K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000e8c00000)
+  from space 39936K, 99% used [0x00000000ebc00000,0x00000000ee2fc690,0x00000000ee300000)
+  to   space 49152K, 0% used [0x00000000e8c00000,0x00000000e8c00000,0x00000000ebc00000)
+ ParOldGen       total 132608K, used 51418K [0x00000000a0000000, 0x00000000a8180000, 0x00000000e0000000)
+  object space 132608K, 38% used [0x00000000a0000000,0x00000000a32368a8,0x00000000a8180000)
+ Metaspace       used 74382K, capacity 75810K, committed 75944K, reserved 1116160K
+  class space    used 9020K, capacity 9366K, committed 9384K, reserved 1048576K
+}
+Event: 117.665 GC heap before
+{Heap before GC invocations=19 (full 4):
+ PSYoungGen      total 183296K, used 183281K [0x00000000e0000000, 0x00000000f0080000, 0x0000000100000000)
+  eden space 143360K, 100% used [0x00000000e0000000,0x00000000e8c00000,0x00000000e8c00000)
+  from space 39936K, 99% used [0x00000000ebc00000,0x00000000ee2fc690,0x00000000ee300000)
+  to   space 49152K, 0% used [0x00000000e8c00000,0x00000000e8c00000,0x00000000ebc00000)
+ ParOldGen       total 132608K, used 51418K [0x00000000a0000000, 0x00000000a8180000, 0x00000000e0000000)
+  object space 132608K, 38% used [0x00000000a0000000,0x00000000a32368a8,0x00000000a8180000)
+ Metaspace       used 80284K, capacity 81980K, committed 82088K, reserved 1122304K
+  class space    used 9743K, capacity 10147K, committed 10152K, reserved 1048576K
+Event: 119.230 GC heap after
+Heap after GC invocations=19 (full 4):
+ PSYoungGen      total 192512K, used 49142K [0x00000000e0000000, 0x00000000f6100000, 0x0000000100000000)
+  eden space 143360K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000e8c00000)
+  from space 49152K, 99% used [0x00000000e8c00000,0x00000000ebbfd980,0x00000000ebc00000)
+  to   space 74240K, 0% used [0x00000000f1880000,0x00000000f1880000,0x00000000f6100000)
+ ParOldGen       total 132608K, used 97598K [0x00000000a0000000, 0x00000000a8180000, 0x00000000e0000000)
+  object space 132608K, 73% used [0x00000000a0000000,0x00000000a5f4f898,0x00000000a8180000)
+ Metaspace       used 80284K, capacity 81980K, committed 82088K, reserved 1122304K
+  class space    used 9743K, capacity 10147K, committed 10152K, reserved 1048576K
+}
+Event: 128.588 GC heap before
+{Heap before GC invocations=20 (full 4):
+ PSYoungGen      total 192512K, used 192502K [0x00000000e0000000, 0x00000000f6100000, 0x0000000100000000)
+  eden space 143360K, 100% used [0x00000000e0000000,0x00000000e8c00000,0x00000000e8c00000)
+  from space 49152K, 99% used [0x00000000e8c00000,0x00000000ebbfd980,0x00000000ebc00000)
+  to   space 74240K, 0% used [0x00000000f1880000,0x00000000f1880000,0x00000000f6100000)
+ ParOldGen       total 132608K, used 97598K [0x00000000a0000000, 0x00000000a8180000, 0x00000000e0000000)
+  object space 132608K, 73% used [0x00000000a0000000,0x00000000a5f4f898,0x00000000a8180000)
+ Metaspace       used 81905K, capacity 83868K, committed 84136K, reserved 1122304K
+  class space    used 9944K, capacity 10395K, committed 10408K, reserved 1048576K
+Event: 135.586 GC heap after
+Heap after GC invocations=20 (full 4):
+ PSYoungGen      total 260608K, used 74225K [0x00000000e0000000, 0x00000000f9c00000, 0x0000000100000000)
+  eden space 186368K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000eb600000)
+  from space 74240K, 99% used [0x00000000f1880000,0x00000000f60fc6c0,0x00000000f6100000)
+  to   space 100864K, 0% used [0x00000000eb600000,0x00000000eb600000,0x00000000f1880000)
+ ParOldGen       total 136192K, used 135314K [0x00000000a0000000, 0x00000000a8500000, 0x00000000e0000000)
+  object space 136192K, 99% used [0x00000000a0000000,0x00000000a8424bd0,0x00000000a8500000)
+ Metaspace       used 81905K, capacity 83868K, committed 84136K, reserved 1122304K
+  class space    used 9944K, capacity 10395K, committed 10408K, reserved 1048576K
+}
+Event: 135.602 GC heap before
+{Heap before GC invocations=21 (full 5):
+ PSYoungGen      total 260608K, used 74225K [0x00000000e0000000, 0x00000000f9c00000, 0x0000000100000000)
+  eden space 186368K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000eb600000)
+  from space 74240K, 99% used [0x00000000f1880000,0x00000000f60fc6c0,0x00000000f6100000)
+  to   space 100864K, 0% used [0x00000000eb600000,0x00000000eb600000,0x00000000f1880000)
+ ParOldGen       total 136192K, used 135314K [0x00000000a0000000, 0x00000000a8500000, 0x00000000e0000000)
+  object space 136192K, 99% used [0x00000000a0000000,0x00000000a8424bd0,0x00000000a8500000)
+ Metaspace       used 81905K, capacity 83868K, committed 84136K, reserved 1122304K
+  class space    used 9944K, capacity 10395K, committed 10408K, reserved 1048576K
+
+Deoptimization events (10 events):
+Event: 125.044 Thread 0x00007f578c001800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f57d7045a98 method=com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement()Z @ 436
+Event: 127.954 Thread 0x00007f578c001800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f57d70aab64 method=com.sun.org.apache.xerces.internal.dom.ParentNode.nodeListItem(I)Lorg/w3c/dom/Node; @ 4
+Event: 127.981 Thread 0x00007f578c001800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f57d70f8f0c method=android.databinding.tool.reflection.SdkUtil$ApiChecker.buildFullLookup()V @ 49
+Event: 127.981 Thread 0x00007f578c001800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f57d6c167f8 method=com.sun.tools.javac.util.ListBuffer.next()Ljava/lang/Object; @ 12
+Event: 127.982 Thread 0x00007f578c001800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f57d729d790 method=com.sun.tools.javac.parser.JavaTokenizer.readToken()Lcom/sun/tools/javac/parser/Tokens$Token; @ 1248
+Event: 128.288 Thread 0x00007f578c001800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f57d7528be8 method=com.sun.tools.javac.comp.Check.checkDeprecated(Lcom/sun/tools/javac/util/JCDiagnostic$DiagnosticPosition;Lcom/sun/tools/javac/code/Symbol;Lcom/sun/tools/javac/code/Symbol;)V
+Event: 128.426 Thread 0x00007f578c001800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f57d72c2768 method=com.sun.tools.javac.comp.Check.checkUnique(Lcom/sun/tools/javac/util/JCDiagnostic$DiagnosticPosition;Lcom/sun/tools/javac/code/Symbol;Lcom/sun/tools/javac/code/Scope;)Z @ 
+Event: 128.426 Thread 0x00007f578c001800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f57d72c2768 method=com.sun.tools.javac.comp.Check.checkUnique(Lcom/sun/tools/javac/util/JCDiagnostic$DiagnosticPosition;Lcom/sun/tools/javac/code/Symbol;Lcom/sun/tools/javac/code/Scope;)Z @ 
+Event: 128.426 Thread 0x00007f578c001800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f57d72c2768 method=com.sun.tools.javac.comp.Check.checkUnique(Lcom/sun/tools/javac/util/JCDiagnostic$DiagnosticPosition;Lcom/sun/tools/javac/code/Symbol;Lcom/sun/tools/javac/code/Scope;)Z @ 
+Event: 128.566 Thread 0x00007f578c001800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f57d7045a98 method=com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement()Z @ 436
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 112.836 Thread 0x00007f578c001800 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.lambda$comparing$ea9a8b3a$1(Ljava/util/Comparator;Ljava/util/function/Function;Ljava/lang/Object;Ljava/lang/Object;)I> (0x00000000e4a25330) thrown at [/usr/local/google/home/ralucas/source/AOSP-
+Event: 116.181 Thread 0x00007f578c001800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000e659dc18) thrown at [/usr/local/google/home/ralucas/source/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 1613]
+Event: 116.350 Thread 0x00007f578c001800 Implicit null exception at 0x00007f57d6df544f to 0x00007f57d6df54e9
+Event: 116.455 Thread 0x00007f578c001800 Exception <a 'java/lang/ClassNotFoundException': com/sun/org/glassfish/hk2/osgiresourcelocator/ServiceLoader> (0x00000000e6b1a988) thrown at [/usr/local/google/home/ralucas/source/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/classfile/systemDictionary.cpp,
+Event: 116.499 Thread 0x00007f578c001800 Exception <a 'java/lang/NullPointerException'> (0x00000000e6b23548) thrown at [/usr/local/google/home/ralucas/source/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/interpreter/linkResolver.cpp, line 1301]
+Event: 117.379 Thread 0x00007f578c001800 Implicit null exception at 0x00007f57d6bee790 to 0x00007f57d6beec49
+Event: 117.478 Thread 0x00007f578c001800 Implicit null exception at 0x00007f57d6f4920e to 0x00007f57d6f4b31d
+Event: 121.777 Thread 0x00007f578c001800 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.lambda$isEqual$3(Ljava/lang/Object;Ljava/lang/Object;)Z> (0x00000000e201ff18) thrown at [/usr/local/google/home/ralucas/source/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/interpreter/linkResolve
+Event: 125.044 Thread 0x00007f578c001800 Implicit null exception at 0x00007f57d6fe5f59 to 0x00007f57d6fe7ab2
+Event: 127.954 Thread 0x00007f578c001800 Implicit null exception at 0x00007f57d70aa9b2 to 0x00007f57d70aab4d
+
+Events (10 events):
+Event: 128.426 Thread 0x00007f578c001800 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x00007f57d72c2768
+Event: 128.426 Thread 0x00007f578c001800 DEOPT PACKING pc=0x00007f57d72c2768 sp=0x00007f57d0506cd0
+Event: 128.426 Thread 0x00007f578c001800 DEOPT UNPACKING pc=0x00007f57d504547a sp=0x00007f57d0506cc0 mode 2
+Event: 128.426 Thread 0x00007f578c001800 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x00007f57d72c2768
+Event: 128.426 Thread 0x00007f578c001800 DEOPT PACKING pc=0x00007f57d72c2768 sp=0x00007f57d0506cd0
+Event: 128.426 Thread 0x00007f578c001800 DEOPT UNPACKING pc=0x00007f57d504547a sp=0x00007f57d0506cc0 mode 2
+Event: 128.566 Thread 0x00007f578c001800 Uncommon trap: trap_request=0xffffffde fr.pc=0x00007f57d7045a98
+Event: 128.566 Thread 0x00007f578c001800 DEOPT PACKING pc=0x00007f57d7045a98 sp=0x00007f57d0506cc0
+Event: 128.566 Thread 0x00007f578c001800 DEOPT UNPACKING pc=0x00007f57d504547a sp=0x00007f57d0506cb8 mode 2
+Event: 128.588 Executing VM operation: ParallelGCFailedAllocation
+
+
+Dynamic libraries:
+a0000000-a8500000 rw-p 00000000 00:00 0 
+aef00000-e0000000 ---p 00000000 00:00 0 
+e0000000-f9c00000 rw-p 00000000 00:00 0 
+f9c00000-100000000 ---p 00000000 00:00 0 
+100000000-100a2a000 rw-p 00000000 00:00 0 
+100a2a000-140000000 ---p 00000000 00:00 0 
+559bb8563000-559bb8564000 r-xp 00000000 08:01 10227547                   /home/ehsan/android-studio/jre/jre/bin/java
+559bb8763000-559bb8764000 r--p 00000000 08:01 10227547                   /home/ehsan/android-studio/jre/jre/bin/java
+559bb8764000-559bb8765000 rw-p 00001000 08:01 10227547                   /home/ehsan/android-studio/jre/jre/bin/java
+559bb8e12000-559bb8e33000 rw-p 00000000 00:00 0                          [heap]
+7f576c000000-7f576c021000 rw-p 00000000 00:00 0 
+7f576c021000-7f5770000000 ---p 00000000 00:00 0 
+7f5770000000-7f5770021000 rw-p 00000000 00:00 0 
+7f5770021000-7f5774000000 ---p 00000000 00:00 0 
+7f5774000000-7f5774021000 rw-p 00000000 00:00 0 
+7f5774021000-7f5778000000 ---p 00000000 00:00 0 
+7f5778000000-7f5779364000 rw-p 00000000 00:00 0 
+7f5779364000-7f577c000000 ---p 00000000 00:00 0 
+7f577c000000-7f577c021000 rw-p 00000000 00:00 0 
+7f577c021000-7f5780000000 ---p 00000000 00:00 0 
+7f5780000000-7f5780429000 rw-p 00000000 00:00 0 
+7f5780429000-7f5784000000 ---p 00000000 00:00 0 
+7f5784000000-7f5784d8a000 rw-p 00000000 00:00 0 
+7f5784d8a000-7f5788000000 ---p 00000000 00:00 0 
+7f5788000000-7f5788021000 rw-p 00000000 00:00 0 
+7f5788021000-7f578c000000 ---p 00000000 00:00 0 
+7f578c000000-7f578c021000 rw-p 00000000 00:00 0 
+7f578c021000-7f5790000000 ---p 00000000 00:00 0 
+7f5790000000-7f5790415000 rw-p 00000000 00:00 0 
+7f5790415000-7f5794000000 ---p 00000000 00:00 0 
+7f5794000000-7f5794021000 rw-p 00000000 00:00 0 
+7f5794021000-7f5798000000 ---p 00000000 00:00 0 
+7f5798000000-7f5798021000 rw-p 00000000 00:00 0 
+7f5798021000-7f579c000000 ---p 00000000 00:00 0 
+7f579c000000-7f579df7c000 rw-p 00000000 00:00 0 
+7f579df7c000-7f57a0000000 ---p 00000000 00:00 0 
+7f57a0000000-7f57a1245000 rw-p 00000000 00:00 0 
+7f57a1245000-7f57a4000000 ---p 00000000 00:00 0 
+7f57a4000000-7f57a4021000 rw-p 00000000 00:00 0 
+7f57a4021000-7f57a8000000 ---p 00000000 00:00 0 
+7f57a8000000-7f57a9f51000 rw-p 00000000 00:00 0 
+7f57a9f51000-7f57ac000000 ---p 00000000 00:00 0 
+7f57ac000000-7f57ac021000 rw-p 00000000 00:00 0 
+7f57ac021000-7f57b0000000 ---p 00000000 00:00 0 
+7f57b0000000-7f57b0021000 rw-p 00000000 00:00 0 
+7f57b0021000-7f57b4000000 ---p 00000000 00:00 0 
+7f57b4000000-7f57b4021000 rw-p 00000000 00:00 0 
+7f57b4021000-7f57b8000000 ---p 00000000 00:00 0 
+7f57b8000000-7f57b8477000 rw-p 00000000 00:00 0 
+7f57b8477000-7f57bc000000 ---p 00000000 00:00 0 
+7f57bc000000-7f57bc02c000 rw-p 00000000 00:00 0 
+7f57bc02c000-7f57c0000000 ---p 00000000 00:00 0 
+7f57c0352000-7f57c0552000 rw-p 00000000 00:00 0 
+7f57c0837000-7f57c0a37000 rw-p 00000000 00:00 0 
+7f57c0a37000-7f57c0a49000 r--s 00345000 08:01 10227445                   /home/ehsan/android-studio/jre/jre/lib/resources.jar
+7f57c0a49000-7f57c0c49000 rw-p 00000000 00:00 0 
+7f57c0c49000-7f57c0e49000 rw-p 00000000 00:00 0 
+7f57c0e49000-7f57c1049000 rw-p 00000000 00:00 0 
+7f57c1049000-7f57c1249000 rw-p 00000000 00:00 0 
+7f57c1249000-7f57c1449000 rw-p 00000000 00:00 0 
+7f57c1449000-7f57c152e000 r-xp 00000000 08:01 3673057                    /tmp/room-6bc03ed5-d4fe-4940-8eb0-df9ab75ed177/sqlite-3.20.1-17864334-5bc8-4c52-85d3-5d06c5e2e5dd-libsqlitejdbc.so
+7f57c152e000-7f57c172d000 ---p 000e5000 08:01 3673057                    /tmp/room-6bc03ed5-d4fe-4940-8eb0-df9ab75ed177/sqlite-3.20.1-17864334-5bc8-4c52-85d3-5d06c5e2e5dd-libsqlitejdbc.so
+7f57c172d000-7f57c1732000 rw-p 000e4000 08:01 3673057                    /tmp/room-6bc03ed5-d4fe-4940-8eb0-df9ab75ed177/sqlite-3.20.1-17864334-5bc8-4c52-85d3-5d06c5e2e5dd-libsqlitejdbc.so
+7f57c1732000-7f57c1933000 rw-p 00000000 00:00 0 
+7f57c1933000-7f57c1b33000 rw-p 00000000 00:00 0 
+7f57c1b33000-7f57c1b42000 r--s 00073000 08:01 3677341                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.mockito/mockito-core/2.8.9/1afb35b2d77d40567756c379e54c18da3574a96e/mockito-core-2.8.9.jar
+7f57c1b42000-7f57c1b4a000 r--s 00045000 08:01 3676266                    /home/ehsan/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/2973d150c0dc1fefe998f834810d68f278ea58ec/junit-4.12.jar
+7f57c1b4a000-7f57c1b4b000 r--s 00000000 08:01 3677323                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.reactivestreams/reactive-streams/1.0.2/323964c36556eb0e6209f65c1cef72b53b461ab8/reactive-streams-1.0.2.jar
+7f57c1b4b000-7f57c1b4c000 r--s 00014000 08:01 3676832                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.14.0/102d7be47241d781ef95f1581d414b0943053130/okio-1.14.0.jar
+7f57c1b4c000-7f57c1b4e000 r--s 00005000 08:01 3677114                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/28.0.0/ed73f5337a002d1fd24339d5fb08c2c9d9ca60d8/support-annotations-28.0.0.jar
+7f57c1b4e000-7f57c1b4f000 r--s 00003000 08:01 25559864                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/cfbdd33eb756cb996f73768501744683/jars/classes.jar
+7f57c1b4f000-7f57c1b50000 r--s 00001000 08:01 25559858                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/a63ca03aeb06f50f87ecc0d61d825263/jars/classes.jar
+7f57c1b50000-7f57c1b51000 r--s 00002000 08:01 25559847                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/312f85e130f2de1e0af7dec50b24aba0/jars/classes.jar
+7f57c1b51000-7f57c1b52000 r--s 00002000 08:01 25559842                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/9db64d080a6acd426ddb0f892c4692a5/jars/classes.jar
+7f57c1b52000-7f57c1b53000 r--s 00001000 08:01 25559833                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/d045edd29bee5c98037f5ad0e7e45e7c/jars/classes.jar
+7f57c1b53000-7f57c1b54000 r--s 00002000 08:01 25559819                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/db-1.1.1.aar/2048431409bb8f7b4d8c722a6017720e/jars/classes.jar
+7f57c1b54000-7f57c1b55000 r--s 00002000 08:01 25559792                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/db-framework-1.1.1.aar/3b2db3b7624145fe754cc7bfc726d278/jars/classes.jar
+7f57c1b55000-7f57c1b56000 r--s 00001000 08:01 25559807                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/aac39d16f9f10825e68159951c33e18f/jars/classes.jar
+7f57c1b56000-7f57c1b57000 r--s 00002000 08:01 3676825                    /home/ehsan/.gradle/caches/modules-2/files-2.1/android.arch.core/common/1.1.1/e55b70d1f5620db124b3e85a7f4bdc7bd48d9f95/common-1.1.1.jar
+7f57c1b57000-7f57c1b59000 r--s 00000000 08:01 16518252                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/53347b3d756f0464046bb32ac08ba283/jars/classes.jar
+7f57c1b59000-7f57c1b5b000 r--s 00001000 08:01 25559795                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/34c282c8e70fc401db276f81d1a0f23f/jars/classes.jar
+7f57c1b5b000-7f57c1b5c000 r--s 00002000 08:01 25559780                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/d57c2d97581973d9548eb42514b32534/jars/classes.jar
+7f57c1b5c000-7f57c1b5e000 r--s 00009000 08:01 3677113                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.android.support/collections/28.0.0/c1bcdade4d3cc2836130424a3f3e4182c666a745/collections-28.0.0.jar
+7f57c1b5e000-7f57c1b5f000 r--s 00006000 08:01 24774411                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/883fe1d7fe1a28099a7c323f137caa40/jars/classes.jar
+7f57c1b5f000-7f57c1b60000 r--s 00002000 08:01 16126851                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/42f6c6f9f4ab002edba1d94c46885c66/jars/classes.jar
+7f57c1b60000-7f57c1b6c000 r--s 0008e000 08:01 25559553                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/d97e9004d8750603e2f31a1da8c9e0bf/jars/classes.jar
+7f57c1b6c000-7f57c1b6e000 r--s 00007000 08:01 25559543                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/dd7e64a13519a19298803820e2b86262/jars/classes.jar
+7f57c1b6e000-7f57c1b70000 r--s 00007000 08:01 25559535                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/cf15e8eff4ce016e057f7b2e037bb8f1/jars/classes.jar
+7f57c1b70000-7f57c1b71000 r--s 00000000 08:01 25559524                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/0a63d86979b03b4ccb80e10ac57d89f8/jars/classes.jar
+7f57c1b71000-7f57c1b72000 r--s 00001000 08:01 25559518                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/8586b071807e57dbf2a8692370e045b9/jars/classes.jar
+7f57c1b72000-7f57c1b74000 r--s 00007000 08:01 25559537                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/04be0f8bc47b188012d41e7b93abc2de/jars/classes.jar
+7f57c1b74000-7f57c1b76000 r--s 00007000 08:01 25559506                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/cc8cfadf03de4701ab36303fea346fae/jars/classes.jar
+7f57c1b76000-7f57c1b77000 r--s 00005000 08:01 25559512                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/ca49353fc9f81f57ce563d47c879bb73/jars/classes.jar
+7f57c1b77000-7f57c1b78000 r--s 00007000 08:01 25559477                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/68ea6b75ec9be5b6c2e8e73447378415/jars/classes.jar
+7f57c1b78000-7f57c1b7a000 r--s 00009000 08:01 25559480                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/62d0fcb61c2ab49e2036515a6ca6aad5/jars/classes.jar
+7f57c1b7a000-7f57c1b7c000 r--s 0000c000 08:01 25559500                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/92afb29dada40c729d506d65f18a7fbe/jars/classes.jar
+7f57c1b7c000-7f57c1b80000 r--s 00029000 08:01 25559491                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/transition-28.0.0.aar/78ee9f5e6ee8f7fa33778f41ba57e1a9/jars/classes.jar
+7f57c1b80000-7f57c1b81000 r--s 00002000 08:01 25559457                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/776d017dcd64d70ae39182993291c20f/jars/classes.jar
+7f57c1b81000-7f57c1b83000 r--s 00007000 08:01 25559464                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/f0769d5040fdf8b5a9029aa2df90617a/jars/classes.jar
+7f57c1b83000-7f57c1b86000 r--s 00026000 08:01 25559439                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/441eb29eef75b58c67facca1b7c4ac52/jars/classes.jar
+7f57c1b86000-7f57c1b87000 r--s 00000000 08:01 3677339                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.nhaarman/mockito-kotlin-kt1.1/1.5.0/3cb5419929540bcb25bdcc5e9ff7c8a1cb5831c/mockito-kotlin-kt1.1-1.5.0.jar
+7f57c1b87000-7f57c1b88000 r--s 00003000 08:01 25560308                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/core-testing-1.1.1.aar/cd84d9fac7a412ded4d04cd1835f60f1/jars/classes.jar
+7f57c1b88000-7f57c1b8a000 r--s 0000c000 08:01 18484039                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/1cdceb878986050e5dc9c050e172f325/jars/classes.jar
+7f57c1b8a000-7f57c1bb9000 r--s 001e6000 08:01 3677317                    /home/ehsan/.gradle/caches/modules-2/files-2.1/io.reactivex.rxjava2/rxjava/2.1.9/afd2ab255e6b94b064ea87c2ccd84ac0d163a427/rxjava-2.1.9.jar
+7f57c1bb9000-7f57c1bba000 r--s 00002000 08:01 25560286                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/rxjava2-1.1.1.aar/71e23efbf469ae4f3d966d3f3168922a/jars/classes.jar
+7f57c1bba000-7f57c1bbc000 r--s 00001000 08:01 20188877                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.2.aar/5f53968efc4c76af7d85ed7fd8d21244/jars/classes.jar
+7f57c1bbc000-7f57c1bbd000 r--s 00000000 08:01 3677335                    /home/ehsan/.gradle/caches/modules-2/files-2.1/android.arch.lifecycle/common-java8/1.1.1/795d68cd761d093ccb235d1d91b8fd17c2ae25ff/common-java8-1.1.1.jar
+7f57c1bbd000-7f57c1bbf000 r--s 00001000 08:01 25560275                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/reactivestreams-1.1.1.aar/963b61256257f91d7f2ba8f4c40db300/jars/classes.jar
+7f57c1bbf000-7f57c1bc1000 r--s 00004000 08:01 17569148                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/c632eb4da191ec5d08357859fc0dd343/jars/classes.jar
+7f57c1bc1000-7f57c1bc6000 r--s 00034000 08:01 3676836                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.2/3edcfe49d2c6053a70a2a47e4e1c2f94998a49cf/gson-2.8.2.jar
+7f57c1bc6000-7f57c1bcb000 r--s 00060000 08:01 3676829                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.10.0/7ef0f1d95bf4c0b3ba30bbae25e0e562b05cf75e/okhttp-3.10.0.jar
+7f57c1bcb000-7f57c1bcd000 r--s 00001000 08:01 3677332                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/logging-interceptor/3.9.1/36e71ab9e903fc4d1b4a58d80572a91d9fd60caf/logging-interceptor-3.9.1.jar
+7f57c1bcd000-7f57c1bd0000 r--s 00014000 08:01 3676766                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.4.0/fc4aa382632bfaa7be7b41579efba41d5a71ecf3/retrofit-2.4.0.jar
+7f57c1bd0000-7f57c1bd1000 r--s 00003000 08:01 3677307                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/adapter-rxjava2/2.3.0/f436637f9500ab5b8bc32afe556373180894b4a5/adapter-rxjava2-2.3.0.jar
+7f57c1bd1000-7f57c1bd2000 r--s 00001000 08:01 3676235                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.3.0/9e09011e9767bb76b5e27c9b8223476b93b14631/converter-gson-2.3.0.jar
+7f57c1bd2000-7f57c1bd5000 r--s 0001b000 08:01 3676305                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar
+7f57c1bd5000-7f57c1bdb000 r--s 00057000 08:01 25559448                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0.aar/ece36f382dab281b5dbaea9aa56dbef2/jars/classes.jar
+7f57c1bdb000-7f57c1bdd000 r--s 00004000 08:01 25559425                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0.aar/e80922ba7bece0fa0a8b1426a8fcd218/jars/classes.jar
+7f57c1bdd000-7f57c1be8000 r--s 000a6000 08:01 25167294                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/93b66b6829bca3e9ace1e945f055d093/jars/classes.jar
+7f57c1be8000-7f57c1bf1000 r--s 00076000 08:01 25298084                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/cddb466b5b2f15a17c2c7c0fda2ab992/jars/classes.jar
+7f57c1bf1000-7f57c1bf2000 r--s 00006000 08:01 19274853                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/multidex-1.0.3.aar/9874bc720b94d8bd7339698356115912/jars/classes.jar
+7f57c1bf2000-7f57c1bf5000 r--s 0000e000 08:01 16518250                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/library-3.2.1.aar/f85e7c134dc59a56d7e57080bc49d97e/jars/classes.jar
+7f57c1bf5000-7f57c1bf8000 r--s 00011000 08:01 17698093                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/adapters-3.2.1.aar/eb0f338404053e1997d723312ec3752f/jars/classes.jar
+7f57c1bf8000-7f57c1bf9000 r--s 00000000 08:01 3675991                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.codehaus.mojo/animal-sniffer-annotations/1.14/775b7e22fb10026eed3f86e8dc556dfafe35f2d5/animal-sniffer-annotations-1.14.jar
+7f57c1bf9000-7f57c1bfb000 r--s 00001000 08:01 3675990                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.1/976d8d30bebc251db406f2bdb3eb01962b5685b3/j2objc-annotations-1.1.jar
+7f57c1bfb000-7f57c1bfc000 r--s 00002000 08:01 3675989                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.0.18/5f65affce1684999e2f4024983835efc3504012e/error_prone_annotations-2.0.18.jar
+7f57c1bfc000-7f57c1bff000 r--s 00006000 08:01 3675988                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/1.3.9/40719ea6961c0cb6afaeb6a921eaa1f6afd4cfdf/jsr305-1.3.9.jar
+7f57c1bff000-7f57c1c00000 r--s 00001000 08:01 3677220                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.android.tools/annotations/26.2.1/5f9b112634e53890e16cc2947989bc2bc048734e/annotations-26.2.1.jar
+7f57c1c00000-7f57c1c01000 r--s 00003000 08:01 3677192                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.android.databinding/baseLibrary/3.2.1/62174ecf31e2e3e4dd7a21cbd05399e11d0a9699/baseLibrary-3.2.1.jar
+7f57c1c01000-7f57c1c2c000 r--s 0028a000 08:01 3677429                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.google.errorprone/javac-shaded/9-dev-r4023-3/72b688efd290280a0afde5f9892b0fde6f362d1d/javac-shaded-9-dev-r4023-3.jar
+7f57c1c2c000-7f57c1c2d000 r--s 00001000 08:01 3677428                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-compat-qual/2.3.0/69cb4fea55a9d89b8827d107f17c985cc1a76052/checker-compat-qual-2.3.0.jar
+7f57c1c2d000-7f57c1c32000 r--s 00034000 08:01 3671106                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.0/c4ba5371a29ac9b2ad6129b1d39ea38750043eff/gson-2.8.0.jar
+7f57c1c32000-7f57c1c35000 r--s 00033000 08:01 3675979                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.googlecode.juniversalchardet/juniversalchardet/1.0.3/cd49678784c46aa8789c060538e0154013bb421b/juniversalchardet-1.0.3.jar
+7f57c1c35000-7f57c1c39000 r--s 0002a000 08:01 3675978                    /home/ehsan/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.4/b1b6ea3b7e4aa4f492509a4952029cd8e48019ad/commons-io-2.4.jar
+7f57c1c39000-7f57c1c3a000 r--s 00003000 08:01 3677226                    /home/ehsan/.gradle/caches/modules-2/files-2.1/androidx.databinding/databinding-common/3.2.1/91c10c7ce255ab29ec4aea8a469d6c8ffa60bd53/databinding-common-3.2.1.jar
+7f57c1c3a000-7f57c1c3d000 r--s 00004000 08:01 3676406                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/26.1.0/814258103cf26a15fcc26ecce35f5b7d24b73f8/support-annotations-26.1.0.jar
+7f57c1c3d000-7f57c1c46000 r--s 00032000 08:01 25952273                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/support-compat-25.0.0.aar/db6e1d7acca4739c79e900434682b31b/jars/libs/internal_impl-25.0.0.jar
+7f57c1c46000-7f57c1c55000 r--s 0006e000 08:01 25952274                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/support-compat-25.0.0.aar/db6e1d7acca4739c79e900434682b31b/jars/classes.jar
+7f57c1c55000-7f57c1c56000 r--s 00006000 08:01 25824035                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/support-core-utils-25.0.0.aar/afed523cb7ae6090a267e3b69b08dd0e/jars/libs/internal_impl-25.0.0.jar
+7f57c1c56000-7f57c1c59000 r--s 00010000 08:01 25824036                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/support-core-utils-25.0.0.aar/afed523cb7ae6090a267e3b69b08dd0e/jars/classes.jar
+7f57c1c59000-7f57c1c5b000 r--s 00001000 08:01 25824010                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/support-core-ui-25.0.0.aar/e07d50b4ebf05df33d75e6c9cd3df06c/jars/libs/internal_impl-25.0.0.jar
+7f57c1c5b000-7f57c1c60000 r--s 0003a000 08:01 25824012                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/support-core-ui-25.0.0.aar/e07d50b4ebf05df33d75e6c9cd3df06c/jars/classes.jar
+7f57c1c60000-7f57c1c63000 r--s 0000f000 08:01 25823996                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.0.0.aar/b17538196ba72ba86e248e1607e74522/jars/libs/internal_impl-25.0.0.jar
+7f57c1c63000-7f57c1c68000 r--s 00030000 08:01 25823997                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.0.0.aar/b17538196ba72ba86e248e1607e74522/jars/classes.jar
+7f57c1c68000-7f57c1c69000 r--s 00009000 08:01 25823971                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-25.0.0.aar/df35c5430baaf016bfc866aedf4aea78/jars/classes.jar
+7f57c1c69000-7f57c1c6a000 r--s 00002000 08:01 25823966                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-25.0.0.aar/5e7368ec0691990d6572c39d627961ff/jars/classes.jar
+7f57c1c6a000-7f57c1c6b000 r--s 00003000 08:01 25823947                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/support-fragment-25.0.0.aar/f089ef90e091494bd3b3473f663a68db/jars/libs/internal_impl-25.0.0.jar
+7f57c1c6b000-7f57c1c6e000 r--s 0001e000 08:01 25823948                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/support-fragment-25.0.0.aar/f089ef90e091494bd3b3473f663a68db/jars/classes.jar
+7f57c1c6e000-7f57c1c6f000 r--s 00000000 08:01 25823931                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/support-v4-25.0.0.aar/56cbe002a557c201779622ab4c58d19c/jars/classes.jar
+7f57c1c6f000-7f57c1c7a000 r--s 0009d000 08:01 25823921                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.0.0.aar/29ab5761a2ebb655510b21dc8222d5ea/jars/classes.jar
+7f57c1c7a000-7f57c1c7b000 r--s 00002000 08:01 3677426                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-android-support-jarimpl/2.15/6e59acc60349b1dce2d45afd44065275621531dd/dagger-android-support-jarimpl-2.15.jar
+7f57c1c7b000-7f57c1c7d000 r--s 00005000 08:01 3677425                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-android-jarimpl/2.15/b5b605edbafb78b00edc93afb8b7e72a8f192bd0/dagger-android-jarimpl-2.15.jar
+7f57c1c7d000-7f57c1c7e000 r--s 00000000 08:01 3676263                    /home/ehsan/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar
+7f57c1c7e000-7f57c1caf000 r--s 00258000 08:01 3677427                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/23.3-jre/9124c2675a9de3ba953f66d62339cf62f8e1a143/guava-23.3-jre.jar
+7f57c1caf000-7f57c1cb3000 r--s 00033000 08:01 3677423                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.google.googlejavaformat/google-java-format/1.4/c2f8925850e17caa6da0ed1891a9e9de9414c062/google-java-format-1.4.jar
+7f57c1cb3000-7f57c1cb5000 r--s 00008000 08:01 3677337                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger/2.15/13cc1f509deda05c1fe5a315519d7cb743b8333b/dagger-2.15.jar
+7f57c1cb5000-7f57c1cb7000 r--s 00005000 08:01 25560295                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/dagger-android-2.15.aar/34ca5de8093cd0be88b28bd450165154/jars/classes.jar
+7f57c1cb7000-7f57c1cba000 r--s 0000f000 08:01 3677422                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-producers/2.15/cb9261e680cf2e0a9e1f0693f92b671781cb9f96/dagger-producers-2.15.jar
+7f57c1cba000-7f57c1cbd000 r--s 0001c000 08:01 3677421                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-spi/2.15/b2a7a008233795b6a279c901485b0269549972d6/dagger-spi-2.15.jar
+7f57c1cbd000-7f57c1cc4000 r--s 0003f000 08:01 3671090                    /home/ehsan/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.10/4b95f4897fa13f2cd904aee711aeafc0c5295cd8/commons-codec-1.10.jar
+7f57c1cc4000-7f57c1cdb000 r--s 00154000 08:01 3675977                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.antlr/antlr4/4.5.3/f35db7e4b2446e4174ba6a73db7bd6b3e6bb5da1/antlr4-4.5.3.jar
+7f57c1cdb000-7f57c1edb000 rw-p 00000000 00:00 0 
+7f57c1edb000-7f57c20db000 rw-p 00000000 00:00 0 
+7f57c20db000-7f57c22db000 rw-p 00000000 00:00 0 
+7f57c22db000-7f57c24db000 rw-p 00000000 00:00 0 
+7f57c24db000-7f57c25fc000 r--s 02b7d000 08:01 3675495                    /home/ehsan/DEV/SDK/platforms/android-28/android.jar
+7f57c25fc000-7f57c27fc000 rw-p 00000000 00:00 0 
+7f57c27fc000-7f57c29fc000 rw-p 00000000 00:00 0 
+7f57c29fc000-7f57c2bfc000 rw-p 00000000 00:00 0 
+7f57c2bfc000-7f57c2dfc000 rw-p 00000000 00:00 0 
+7f57c2dfc000-7f57c2ffc000 rw-p 00000000 00:00 0 
+7f57c2ffc000-7f57c31fc000 rw-p 00000000 00:00 0 
+7f57c31fc000-7f57c33fc000 rw-p 00000000 00:00 0 
+7f57c33fc000-7f57c35fc000 rw-p 00000000 00:00 0 
+7f57c35fc000-7f57c37fc000 rw-p 00000000 00:00 0 
+7f57c37fc000-7f57c39fc000 rw-p 00000000 00:00 0 
+7f57c39fc000-7f57c3bfc000 rw-p 00000000 00:00 0 
+7f57c3bfc000-7f57c3dfc000 rw-p 00000000 00:00 0 
+7f57c3dfc000-7f57c3dfe000 r--s 00002000 08:01 3676805                    /home/ehsan/.gradle/caches/modules-2/files-2.1/android.arch.persistence.room/common/1.1.1/8094cc50760b9ac665a8ea76b51888f70042e2b5/common-1.1.1.jar
+7f57c3dfe000-7f57c3e01000 ---p 00000000 00:00 0 
+7f57c3e01000-7f57c3eff000 rw-p 00000000 00:00 0 
+7f57c3eff000-7f57c3f02000 ---p 00000000 00:00 0 
+7f57c3f02000-7f57c4000000 rw-p 00000000 00:00 0 
+7f57c4000000-7f57c4021000 rw-p 00000000 00:00 0 
+7f57c4021000-7f57c8000000 ---p 00000000 00:00 0 
+7f57c8000000-7f57c8004000 r--s 00651000 08:01 3671089                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.xerial/sqlite-jdbc/3.20.1/df3068e837e9490a9554212fcab40a2c55faf0a3/sqlite-jdbc-3.20.1.jar
+7f57c8004000-7f57c8006000 r--s 00004000 08:01 3676824                    /home/ehsan/.gradle/caches/modules-2/files-2.1/android.arch.lifecycle/common/1.1.1/207a6efae6a3555e326de41f76bdadd9a239cbce/common-1.1.1.jar
+7f57c8006000-7f57c8008000 r--s 00015000 08:01 3676974                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.squareup/javapoet/1.8.0/e858dc62ef484048540d27d36f3ec2177a3fa9b1/javapoet-1.8.0.jar
+7f57c8008000-7f57c800b000 r--s 0000f000 08:01 3671088                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.google.auto/auto-common/0.6/cf7212b0f8bfef12657b942df8f4f2cf032d3f41/auto-common-0.6.jar
+7f57c800b000-7f57c8049000 r--s 002f3000 08:01 3671086                    /home/ehsan/.gradle/caches/modules-2/files-2.1/me.eugeniomarletti.kotlin.metadata/kotlin-compiler-lite/1.0.3-k-1.2.40/a16e967c276379eaf6e1fa03af77664f003db947/kotlin-compiler-lite-1.0.3-k-1.2.40.jar
+7f57c8049000-7f57c8050000 r--s 00052000 08:01 3677189                    /home/ehsan/.gradle/caches/modules-2/files-2.1/androidx.databinding/databinding-compiler-common/3.2.1/dee402009966fb2d3bb03e3186f3f16b9c503c86/databinding-compiler-common-3.2.1.jar
+7f57c8050000-7f57c805b000 r--s 000f5000 08:01 3677401                    /home/ehsan/.gradle/caches/modules-2/files-2.1/androidx.databinding/databinding-compiler/3.2.1/7f0675f8d406183b9e35eea3faaef3f65f3d3d58/databinding-compiler-3.2.1.jar
+7f57c805b000-7f57c8069000 r--s 000ca000 08:01 3677420                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-compiler/2.15/c114d70b9a4e814132fc147e8b79b1a294e5c2db/dagger-compiler-2.15.jar
+7f57c8069000-7f57c809b000 r--s 0022d000 08:01 3677342                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.1.2-4/d003c37a5be39d8e5b0c6894378f75a7bd8482a1/kotlin-reflect-1.1.2-4.jar
+7f57c809b000-7f57c80d6000 r--s 00270000 08:01 3677345                    /home/ehsan/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy/1.6.14/871c3e49dc6183d0d361601c2f1d11abb1a6b48c/byte-buddy-1.6.14.jar
+7f57c80d6000-7f57c80d9000 r--s 0000b000 08:01 3677344                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.objenesis/objenesis/2.5/612ecb799912ccf77cba9b3ed8c813da086076e9/objenesis-2.5.jar
+7f57c80d9000-7f57c80da000 r--s 00001000 08:01 3677424                    /home/ehsan/.gradle/caches/modules-2/files-2.1/javax.annotation/jsr250-api/1.0/5025422767732a1ab45d93abfea846513d742dcf/jsr250-api-1.0.jar
+7f57c80da000-7f57c80dd000 r--s 0001c000 08:01 3677204                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.android.tools.build.jetifier/jetifier-core/1.0.0-alpha10/9eb7027c383061de12f93aae7a22cbeb97832d2a/jetifier-core-1.0.0-alpha10.jar
+7f57c80dd000-7f57c80df000 r--s 00002000 08:01 3677196                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.2.71/5470d1f752cd342edb77e1062bac07e838d2cea4/kotlin-stdlib-jdk8-1.2.71.jar
+7f57c80df000-7f57c80e2000 r--s 0000c000 08:01 3671108                    /home/ehsan/.gradle/caches/modules-2/files-2.1/me.eugeniomarletti.kotlin.metadata/kotlin-metadata/1.4.0/f90c95f5fc4db865dfb0499671a81e02e2080032/kotlin-metadata-1.4.0.jar
+7f57c80e2000-7f57c80e5000 r--s 00019000 08:01 3677419                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-android-processor/2.15/8834d9ab228b5ed37bea03165f0d74606054cc28/dagger-android-processor-2.15.jar
+7f57c80e5000-7f57c80f4000 r--s 000e7000 08:01 3671084                    /home/ehsan/.gradle/caches/modules-2/files-2.1/android.arch.persistence.room/compiler/1.1.1/53037626f1971006fcf8e112594c6902efafff6/compiler-1.1.1.jar
+7f57c80f4000-7f57c80f6000 r--s 0000b000 08:01 3671081                    /home/ehsan/.gradle/caches/modules-2/files-2.1/android.arch.lifecycle/compiler/1.1.1/96ab955a10609f6c3d91b872628ccf44c567a22a/compiler-1.1.1.jar
+7f57c80f6000-7f57c80f8000 r--s 00009000 08:01 3677346                    /home/ehsan/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.6.14/ba1e5ba3a84fb2fbf2f4de9138df19665eec4d59/byte-buddy-agent-1.6.14.jar
+7f57c80f8000-7f57c80fa000 r--s 00009000 08:01 3676280                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar
+7f57c80fa000-7f57c80fe000 r--s 00042000 08:01 3677190                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-annotation-processing-gradle/1.2.71/9786b76a77080e76ced78e7c9165076b5eaa3467/kotlin-annotation-processing-gradle-1.2.71.jar
+7f57c80fe000-7f57c82fe000 rw-p 00000000 00:00 0 
+7f57c82fe000-7f57c84fe000 rw-p 00000000 00:00 0 
+7f57c84fe000-7f57c86fe000 rw-p 00000000 00:00 0 
+7f57c86fe000-7f57c88fe000 rw-p 00000000 00:00 0 
+7f57c88fe000-7f57c8afe000 rw-p 00000000 00:00 0 
+7f57c8afe000-7f57c8cfe000 rw-p 00000000 00:00 0 
+7f57c8cfe000-7f57c8d01000 ---p 00000000 00:00 0 
+7f57c8d01000-7f57c8fff000 rw-p 00000000 00:00 0 
+7f57c8fff000-7f57cc000000 rw-p 00000000 00:00 0 
+7f57cc000000-7f57cc035000 rw-p 00000000 00:00 0 
+7f57cc035000-7f57d0000000 ---p 00000000 00:00 0 
+7f57d0000000-7f57d0007000 r--s 0004b000 08:01 3677208                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-android-extensions/1.2.71/bda3ee49317ef7a1e8058de61f91abe94c015538/kotlin-android-extensions-1.2.71.jar
+7f57d0007000-7f57d000a000 ---p 00000000 00:00 0 
+7f57d000a000-7f57d0108000 rw-p 00000000 00:00 0 
+7f57d0108000-7f57d010b000 ---p 00000000 00:00 0 
+7f57d010b000-7f57d0209000 rw-p 00000000 00:00 0 
+7f57d0209000-7f57d020c000 ---p 00000000 00:00 0 
+7f57d020c000-7f57d030a000 rw-p 00000000 00:00 0 
+7f57d030a000-7f57d030d000 ---p 00000000 00:00 0 
+7f57d030d000-7f57d040b000 rw-p 00000000 00:00 0 
+7f57d040b000-7f57d040e000 ---p 00000000 00:00 0 
+7f57d040e000-7f57d050c000 rw-p 00000000 00:00 0 
+7f57d050c000-7f57d050f000 ---p 00000000 00:00 0 
+7f57d050f000-7f57d060d000 rw-p 00000000 00:00 0 
+7f57d060d000-7f57d0610000 ---p 00000000 00:00 0 
+7f57d0610000-7f57d070e000 rw-p 00000000 00:00 0 
+7f57d070e000-7f57d0713000 r--s 0009a000 08:01 10227520                   /home/ehsan/android-studio/jre/jre/lib/jsse.jar
+7f57d0713000-7f57d078c000 r--s 010fd000 08:01 10227565                   /home/ehsan/android-studio/jre/lib/tools.jar
+7f57d078c000-7f57d0792000 r--s 00016000 08:01 3676491                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.2.71/ba18ca1aa0e40eb6f1865b324af2f4cbb691c1ec/kotlin-stdlib-common-1.2.71.jar
+7f57d0792000-7f57d07a8000 r-xp 00000000 08:01 10227500                   /home/ehsan/android-studio/jre/jre/lib/amd64/libnet.so
+7f57d07a8000-7f57d09a7000 ---p 00016000 08:01 10227500                   /home/ehsan/android-studio/jre/jre/lib/amd64/libnet.so
+7f57d09a7000-7f57d09a8000 r--p 00015000 08:01 10227500                   /home/ehsan/android-studio/jre/jre/lib/amd64/libnet.so
+7f57d09a8000-7f57d09a9000 rw-p 00016000 08:01 10227500                   /home/ehsan/android-studio/jre/jre/lib/amd64/libnet.so
+7f57d09a9000-7f57d09ba000 r-xp 00000000 08:01 10227491                   /home/ehsan/android-studio/jre/jre/lib/amd64/libnio.so
+7f57d09ba000-7f57d0bb9000 ---p 00011000 08:01 10227491                   /home/ehsan/android-studio/jre/jre/lib/amd64/libnio.so
+7f57d0bb9000-7f57d0bba000 r--p 00010000 08:01 10227491                   /home/ehsan/android-studio/jre/jre/lib/amd64/libnio.so
+7f57d0bba000-7f57d0bbb000 rw-p 00011000 08:01 10227491                   /home/ehsan/android-studio/jre/jre/lib/amd64/libnio.so
+7f57d0bbb000-7f57d0bc4000 r-xp 00000000 08:01 10227467                   /home/ehsan/android-studio/jre/jre/lib/amd64/libmanagement.so
+7f57d0bc4000-7f57d0dc3000 ---p 00009000 08:01 10227467                   /home/ehsan/android-studio/jre/jre/lib/amd64/libmanagement.so
+7f57d0dc3000-7f57d0dc4000 r--p 00008000 08:01 10227467                   /home/ehsan/android-studio/jre/jre/lib/amd64/libmanagement.so
+7f57d0dc4000-7f57d0dc5000 rw-p 00009000 08:01 10227467                   /home/ehsan/android-studio/jre/jre/lib/amd64/libmanagement.so
+7f57d0dc5000-7f57d0f92000 r--s 019f5000 08:01 3677209                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.2.71/a79f934bfbc1c7e16638da3474feab351735f1c0/kotlin-compiler-embeddable-1.2.71.jar
+7f57d0f92000-7f57d0f93000 ---p 00000000 00:00 0 
+7f57d0f93000-7f57d1093000 rw-p 00000000 00:00 0 
+7f57d1093000-7f57d1096000 ---p 00000000 00:00 0 
+7f57d1096000-7f57d1194000 rw-p 00000000 00:00 0 
+7f57d1194000-7f57d1195000 ---p 00000000 00:00 0 
+7f57d1195000-7f57d1198000 ---p 00000000 00:00 0 
+7f57d1198000-7f57d1295000 rw-p 00000000 00:00 0 
+7f57d1295000-7f57d1296000 ---p 00000000 00:00 0 
+7f57d1296000-7f57d1299000 ---p 00000000 00:00 0 
+7f57d1299000-7f57d1396000 rw-p 00000000 00:00 0 
+7f57d1396000-7f57d1397000 ---p 00000000 00:00 0 
+7f57d1397000-7f57d139a000 ---p 00000000 00:00 0 
+7f57d139a000-7f57d1497000 rw-p 00000000 00:00 0 
+7f57d1497000-7f57d149a000 ---p 00000000 00:00 0 
+7f57d149a000-7f57d1598000 rw-p 00000000 00:00 0 
+7f57d1598000-7f57d19fa000 r--p 00000000 08:01 19404713                   /usr/lib/locale/locale-archive
+7f57d19fa000-7f57d19fd000 ---p 00000000 00:00 0 
+7f57d19fd000-7f57d1afb000 rw-p 00000000 00:00 0 
+7f57d1afb000-7f57d1afe000 ---p 00000000 00:00 0 
+7f57d1afe000-7f57d1bfc000 rw-p 00000000 00:00 0 
+7f57d1bfc000-7f57d1bfd000 ---p 00000000 00:00 0 
+7f57d1bfd000-7f57d5000000 rw-p 00000000 00:00 0 
+7f57d5000000-7f57d75b0000 rwxp 00000000 00:00 0 
+7f57d75b0000-7f57e4000000 ---p 00000000 00:00 0 
+7f57e4000000-7f57e43cb000 rw-p 00000000 00:00 0 
+7f57e43cb000-7f57e8000000 ---p 00000000 00:00 0 
+7f57e8000000-7f57e8001000 r--s 00003000 08:01 3671085                    /home/ehsan/.gradle/caches/modules-2/files-2.1/android.arch.persistence.room/migration/1.1.1/663d64aaa09566ad57d8367c38bd82b810674782/migration-1.1.1.jar
+7f57e8001000-7f57e8003000 r--s 0000a000 08:01 3677340                    /home/ehsan/.gradle/caches/modules-2/files-2.1/com.nhaarman/mockito-kotlin/1.5.0/25faa884f76375f76cdbd6651c4cebcde36d4117/mockito-kotlin-1.5.0.jar
+7f57e8003000-7f57e8005000 r--s 00003000 08:01 3675998                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar
+7f57e8005000-7f57e8020000 r--s 00394000 08:01 10227524                   /home/ehsan/android-studio/jre/jre/lib/ext/cldrdata.jar
+7f57e8020000-7f57e8030000 r--s 000db000 08:01 3677179                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.2.71/d9717625bb3c731561251f8dd2c67a1011d6764c/kotlin-stdlib-1.2.71.jar
+7f57e8030000-7f57e8066000 r--s 0024a000 08:01 3677211                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.2.71/7512db3b3182753bd2e48ce8d345abbadc40fe6b/kotlin-reflect-1.2.71.jar
+7f57e8066000-7f57e8d61000 rw-p 00000000 00:00 0 
+7f57e8d61000-7f57e8f31000 r--s 03c54000 08:01 10227462                   /home/ehsan/android-studio/jre/jre/lib/rt.jar
+7f57e8f31000-7f57e97a7000 rw-p 00000000 00:00 0 
+7f57e97a7000-7f57e9aa7000 rw-p 00000000 00:00 0 
+7f57e9aa7000-7f57e9aa8000 ---p 00000000 00:00 0 
+7f57e9aa8000-7f57e9ba8000 rw-p 00000000 00:00 0 
+7f57e9ba8000-7f57e9ba9000 ---p 00000000 00:00 0 
+7f57e9ba9000-7f57e9ca9000 rw-p 00000000 00:00 0 
+7f57e9ca9000-7f57e9caa000 ---p 00000000 00:00 0 
+7f57e9caa000-7f57e9daa000 rw-p 00000000 00:00 0 
+7f57e9daa000-7f57e9dab000 ---p 00000000 00:00 0 
+7f57e9dab000-7f57e9eee000 rw-p 00000000 00:00 0 
+7f57e9eee000-7f57ea0ab000 ---p 00000000 00:00 0 
+7f57ea0ab000-7f57ea0ee000 rw-p 00000000 00:00 0 
+7f57ea0ee000-7f57ea2ab000 ---p 00000000 00:00 0 
+7f57ea2ab000-7f57ea379000 rw-p 00000000 00:00 0 
+7f57ea379000-7f57ea3ab000 ---p 00000000 00:00 0 
+7f57ea3ab000-7f57ea443000 rw-p 00000000 00:00 0 
+7f57ea443000-7f57ea76c000 ---p 00000000 00:00 0 
+7f57ea76c000-7f57ea786000 r-xp 00000000 08:01 10227499                   /home/ehsan/android-studio/jre/jre/lib/amd64/libzip.so
+7f57ea786000-7f57ea985000 ---p 0001a000 08:01 10227499                   /home/ehsan/android-studio/jre/jre/lib/amd64/libzip.so
+7f57ea985000-7f57ea986000 r--p 00019000 08:01 10227499                   /home/ehsan/android-studio/jre/jre/lib/amd64/libzip.so
+7f57ea986000-7f57ea987000 rw-p 0001a000 08:01 10227499                   /home/ehsan/android-studio/jre/jre/lib/amd64/libzip.so
+7f57ea987000-7f57ea992000 r-xp 00000000 08:01 31986322                   /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f57ea992000-7f57eab91000 ---p 0000b000 08:01 31986322                   /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f57eab91000-7f57eab92000 r--p 0000a000 08:01 31986322                   /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f57eab92000-7f57eab93000 rw-p 0000b000 08:01 31986322                   /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f57eab93000-7f57eab99000 rw-p 00000000 00:00 0 
+7f57eab99000-7f57eabb0000 r-xp 00000000 08:01 31986316                   /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f57eabb0000-7f57eadaf000 ---p 00017000 08:01 31986316                   /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f57eadaf000-7f57eadb0000 r--p 00016000 08:01 31986316                   /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f57eadb0000-7f57eadb1000 rw-p 00017000 08:01 31986316                   /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f57eadb1000-7f57eadb3000 rw-p 00000000 00:00 0 
+7f57eadb3000-7f57eadbe000 r-xp 00000000 08:01 31986333                   /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f57eadbe000-7f57eafbd000 ---p 0000b000 08:01 31986333                   /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f57eafbd000-7f57eafbe000 r--p 0000a000 08:01 31986333                   /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f57eafbe000-7f57eafbf000 rw-p 0000b000 08:01 31986333                   /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f57eafbf000-7f57eafc7000 r-xp 00000000 08:01 31986318                   /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f57eafc7000-7f57eb1c7000 ---p 00008000 08:01 31986318                   /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f57eb1c7000-7f57eb1c8000 r--p 00008000 08:01 31986318                   /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f57eb1c8000-7f57eb1c9000 rw-p 00009000 08:01 31986318                   /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f57eb1c9000-7f57eb1f6000 r-xp 00000000 08:01 10227498                   /home/ehsan/android-studio/jre/jre/lib/amd64/libjava.so
+7f57eb1f6000-7f57eb3f5000 ---p 0002d000 08:01 10227498                   /home/ehsan/android-studio/jre/jre/lib/amd64/libjava.so
+7f57eb3f5000-7f57eb3f6000 r--p 0002c000 08:01 10227498                   /home/ehsan/android-studio/jre/jre/lib/amd64/libjava.so
+7f57eb3f6000-7f57eb3f8000 rw-p 0002d000 08:01 10227498                   /home/ehsan/android-studio/jre/jre/lib/amd64/libjava.so
+7f57eb3f8000-7f57eb409000 r-xp 00000000 08:01 10227480                   /home/ehsan/android-studio/jre/jre/lib/amd64/libverify.so
+7f57eb409000-7f57eb608000 ---p 00011000 08:01 10227480                   /home/ehsan/android-studio/jre/jre/lib/amd64/libverify.so
+7f57eb608000-7f57eb60a000 r--p 00010000 08:01 10227480                   /home/ehsan/android-studio/jre/jre/lib/amd64/libverify.so
+7f57eb60a000-7f57eb60b000 rw-p 00012000 08:01 10227480                   /home/ehsan/android-studio/jre/jre/lib/amd64/libverify.so
+7f57eb60b000-7f57eb612000 r-xp 00000000 08:01 31986373                   /lib/x86_64-linux-gnu/librt-2.27.so
+7f57eb612000-7f57eb811000 ---p 00007000 08:01 31986373                   /lib/x86_64-linux-gnu/librt-2.27.so
+7f57eb811000-7f57eb812000 r--p 00006000 08:01 31986373                   /lib/x86_64-linux-gnu/librt-2.27.so
+7f57eb812000-7f57eb813000 rw-p 00007000 08:01 31986373                   /lib/x86_64-linux-gnu/librt-2.27.so
+7f57eb813000-7f57eb9b0000 r-xp 00000000 08:01 31986295                   /lib/x86_64-linux-gnu/libm-2.27.so
+7f57eb9b0000-7f57ebbaf000 ---p 0019d000 08:01 31986295                   /lib/x86_64-linux-gnu/libm-2.27.so
+7f57ebbaf000-7f57ebbb0000 r--p 0019c000 08:01 31986295                   /lib/x86_64-linux-gnu/libm-2.27.so
+7f57ebbb0000-7f57ebbb1000 rw-p 0019d000 08:01 31986295                   /lib/x86_64-linux-gnu/libm-2.27.so
+7f57ebbb1000-7f57ec81d000 r-xp 00000000 08:01 10227473                   /home/ehsan/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7f57ec81d000-7f57eca1d000 ---p 00c6c000 08:01 10227473                   /home/ehsan/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7f57eca1d000-7f57ecab1000 r--p 00c6c000 08:01 10227473                   /home/ehsan/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7f57ecab1000-7f57ecad9000 rw-p 00d00000 08:01 10227473                   /home/ehsan/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7f57ecad9000-7f57ecb0a000 rw-p 00000000 00:00 0 
+7f57ecb0a000-7f57eccf1000 r-xp 00000000 08:01 31986232                   /lib/x86_64-linux-gnu/libc-2.27.so
+7f57eccf1000-7f57ecef1000 ---p 001e7000 08:01 31986232                   /lib/x86_64-linux-gnu/libc-2.27.so
+7f57ecef1000-7f57ecef5000 r--p 001e7000 08:01 31986232                   /lib/x86_64-linux-gnu/libc-2.27.so
+7f57ecef5000-7f57ecef7000 rw-p 001eb000 08:01 31986232                   /lib/x86_64-linux-gnu/libc-2.27.so
+7f57ecef7000-7f57ecefb000 rw-p 00000000 00:00 0 
+7f57ecefb000-7f57ecefe000 r-xp 00000000 08:01 31986255                   /lib/x86_64-linux-gnu/libdl-2.27.so
+7f57ecefe000-7f57ed0fd000 ---p 00003000 08:01 31986255                   /lib/x86_64-linux-gnu/libdl-2.27.so
+7f57ed0fd000-7f57ed0fe000 r--p 00002000 08:01 31986255                   /lib/x86_64-linux-gnu/libdl-2.27.so
+7f57ed0fe000-7f57ed0ff000 rw-p 00003000 08:01 31986255                   /lib/x86_64-linux-gnu/libdl-2.27.so
+7f57ed0ff000-7f57ed115000 r-xp 00000000 08:01 10227502                   /home/ehsan/android-studio/jre/jre/lib/amd64/jli/libjli.so
+7f57ed115000-7f57ed315000 ---p 00016000 08:01 10227502                   /home/ehsan/android-studio/jre/jre/lib/amd64/jli/libjli.so
+7f57ed315000-7f57ed316000 r--p 00016000 08:01 10227502                   /home/ehsan/android-studio/jre/jre/lib/amd64/jli/libjli.so
+7f57ed316000-7f57ed317000 rw-p 00017000 08:01 10227502                   /home/ehsan/android-studio/jre/jre/lib/amd64/jli/libjli.so
+7f57ed317000-7f57ed331000 r-xp 00000000 08:01 31986365                   /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f57ed331000-7f57ed530000 ---p 0001a000 08:01 31986365                   /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f57ed530000-7f57ed531000 r--p 00019000 08:01 31986365                   /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f57ed531000-7f57ed532000 rw-p 0001a000 08:01 31986365                   /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f57ed532000-7f57ed536000 rw-p 00000000 00:00 0 
+7f57ed536000-7f57ed55d000 r-xp 00000000 08:01 31986204                   /lib/x86_64-linux-gnu/ld-2.27.so
+7f57ed55d000-7f57ed55e000 r--s 00002000 08:01 25560262                   /home/ehsan/.gradle/caches/transforms-1/files-1.1/dagger-android-support-2.15.aar/08232e1fcb1ba9af1d87de70d7a49344/jars/classes.jar
+7f57ed55e000-7f57ed560000 r--s 00009000 08:01 3677231                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/1.2.71/d5439926359caa899f41e1915b19d6d23e49750b/kotlin-script-runtime-1.2.71.jar
+7f57ed560000-7f57ed643000 rw-p 00000000 00:00 0 
+7f57ed643000-7f57ed644000 ---p 00000000 00:00 0 
+7f57ed644000-7f57ed647000 ---p 00000000 00:00 0 
+7f57ed647000-7f57ed748000 rw-p 00000000 00:00 0 
+7f57ed748000-7f57ed749000 r--s 00000000 08:01 3677210                    /home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/1.2.71/4ce93f539e2133f172f1167291a911f83400a5d0/kotlin-stdlib-jdk7-1.2.71.jar
+7f57ed749000-7f57ed753000 r--s 00116000 08:01 10227531                   /home/ehsan/android-studio/jre/jre/lib/ext/localedata.jar
+7f57ed753000-7f57ed75b000 rw-s 00000000 08:01 3677393                    /tmp/hsperfdata_ehsan/13449
+7f57ed75b000-7f57ed75c000 rw-p 00000000 00:00 0 
+7f57ed75c000-7f57ed75d000 ---p 00000000 00:00 0 
+7f57ed75d000-7f57ed75e000 r--p 00027000 08:01 31986204                   /lib/x86_64-linux-gnu/ld-2.27.so
+7f57ed75e000-7f57ed75f000 rw-p 00028000 08:01 31986204                   /lib/x86_64-linux-gnu/ld-2.27.so
+7f57ed75f000-7f57ed760000 rw-p 00000000 00:00 0 
+7ffe9dcd0000-7ffe9dcf2000 rw-p 00000000 00:00 0                          [stack]
+7ffe9dd45000-7ffe9dd48000 r--p 00000000 00:00 0                          [vvar]
+7ffe9dd48000-7ffe9dd4a000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Djava.awt.headless=true -Djava.rmi.server.hostname=127.0.0.1 -Xmx1536m -Dkotlin.environment.keepalive 
+java_command: org.jetbrains.kotlin.daemon.KotlinCompileDaemon --daemon-runFilesPath /home/ehsan/.local/share/kotlin/daemon --daemon-autoshutdownIdleSeconds=7200 --daemon-compilerClasspath /home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.2.71/a79f934bfbc1c7e16638da3474feab351735f1c0/kotlin-compiler-embeddable-1.2.71.jar:/home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.2.71/7512db3b3182753bd2e48ce8d345abbadc40fe6b/kotlin-reflect-1.2.71.jar:/home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.2.71/d9717625bb3c731561251f8dd2c67a1011d6764c/kotlin-stdlib-1.2.71.jar:/home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/1.2.71/d5439926359caa899f41e1915b19d6d23e49750b/kotlin-script-runtime-1.2.71.jar:/home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.2.71/ba18ca1aa0e40eb6f1865b324af2f4cbb691c1ec/kotlin-stdlib-common-1.2.71.jar:/home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar:/home/ehsan/android-studio/jre/lib/tools.jar
+java_class_path (initial): /home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.2.71/a79f934bfbc1c7e16638da3474feab351735f1c0/kotlin-compiler-embeddable-1.2.71.jar:/home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.2.71/7512db3b3182753bd2e48ce8d345abbadc40fe6b/kotlin-reflect-1.2.71.jar:/home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.2.71/d9717625bb3c731561251f8dd2c67a1011d6764c/kotlin-stdlib-1.2.71.jar:/home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/1.2.71/d5439926359caa899f41e1915b19d6d23e49750b/kotlin-script-runtime-1.2.71.jar:/home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.2.71/ba18ca1aa0e40eb6f1865b324af2f4cbb691c1ec/kotlin-stdlib-common-1.2.71.jar:/home/ehsan/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar:/home/ehsan/android-studio/jre/lib/tools.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/usr/lib/jvm/java-8-oracle
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xa71670], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xa71670], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x8b1780], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x8b1780], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x8b1780], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x8b1780], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x8b1650], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: SIG_IGN, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGINT: [libjvm.so+0x8b1ab0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x8b1ab0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x8b1ab0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=LinuxMint
+DISTRIB_RELEASE=19
+DISTRIB_CODENAME=tara
+DISTRIB_DESCRIPTION="Linux Mint 19 Tara"
+
+uname:Linux 4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018 x86_64
+libc:glibc 2.27 NPTL 2.27 
+rlimit: STACK 8192k, CORE 0k, NPROC 31138, NOFILE 1048576, AS infinity
+load average:6.62 3.46 2.26
+
+/proc/meminfo:
+MemTotal:        8034256 kB
+MemFree:          121896 kB
+MemAvailable:      42132 kB
+Buffers:            6588 kB
+Cached:           154392 kB
+SwapCached:         6804 kB
+Active:          6820152 kB
+Inactive:         885120 kB
+Active(anon):    6797016 kB
+Inactive(anon):   845500 kB
+Active(file):      23136 kB
+Inactive(file):    39620 kB
+Unevictable:         992 kB
+Mlocked:             992 kB
+SwapTotal:       2097148 kB
+SwapFree:             20 kB
+Dirty:               272 kB
+Writeback:          1900 kB
+AnonPages:       7539020 kB
+Mapped:            63764 kB
+Shmem:             97800 kB
+Slab:              93560 kB
+SReclaimable:      47652 kB
+SUnreclaim:        45908 kB
+KernelStack:       11024 kB
+PageTables:        53468 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     6114276 kB
+Committed_AS:   12526108 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      228220 kB
+DirectMap2M:     8026112 kB
+DirectMap1G:     1048576 kB
+
+
+CPU:total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 60 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 60
+model name	: Intel(R) Core(TM) i3-4160 CPU @ 3.60GHz
+stepping	: 3
+microcode	: 0x19
+cpu MHz		: 3591.543
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm abm cpuid_fault epb invpcid_single pti tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt dtherm arat pln pts
+bugs		: cpu_meltdown spectre_v1 spectre_v2
+bogomips	: 7183.09
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 60
+model name	: Intel(R) Core(TM) i3-4160 CPU @ 3.60GHz
+stepping	: 3
+microcode	: 0x19
+cpu MHz		: 3589.503
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm abm cpuid_fault epb invpcid_single pti tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt dtherm arat pln pts
+bugs		: cpu_meltdown spectre_v1 spectre_v2
+bogomips	: 7183.09
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 60
+model name	: Intel(R) Core(TM) i3-4160 CPU @ 3.60GHz
+stepping	: 3
+microcode	: 0x19
+cpu MHz		: 3591.504
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm abm cpuid_fault epb invpcid_single pti tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt dtherm arat pln pts
+bugs		: cpu_meltdown spectre_v1 spectre_v2
+bogomips	: 7183.09
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 60
+model name	: Intel(R) Core(TM) i3-4160 CPU @ 3.60GHz
+stepping	: 3
+microcode	: 0x19
+cpu MHz		: 3572.457
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm abm cpuid_fault epb invpcid_single pti tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt dtherm arat pln pts
+bugs		: cpu_meltdown spectre_v1 spectre_v2
+bogomips	: 7183.09
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 8034256k(136204k free), swap 2097148k(24k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.152-b06) for linux-amd64 JRE (1.8.0_152-release-1136-b06), built by "builder" with gcc 7.3.0
+
+time: Sat Nov  3 17:00:06 2018
+elapsed time: 137 seconds (0d 0h 2m 17s)
+

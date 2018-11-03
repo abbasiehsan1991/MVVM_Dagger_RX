@@ -1,4 +1,4 @@
-package codenevisha.ir.mvvmwithdagger.data
+package codenevisha.ir.mvvmwithdagger.data.model
 
 import android.arch.persistence.room.Entity
 import com.google.gson.annotations.SerializedName
