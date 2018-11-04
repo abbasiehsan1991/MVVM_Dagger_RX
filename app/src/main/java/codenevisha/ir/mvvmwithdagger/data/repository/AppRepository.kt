@@ -13,5 +13,4 @@ interface AppRepository {
     ): Disposable
 
     fun insertArticle(article: Article): Disposable
-
 }

@@ -3,10 +3,11 @@ package codenevisha.ir.mvvmwithdagger.data.repository
 import codenevisha.ir.mvvmwithdagger.data.db.AppDatabase
 import codenevisha.ir.mvvmwithdagger.data.model.Article
 import codenevisha.ir.mvvmwithdagger.data.network.ApiError
+import codenevisha.ir.mvvmwithdagger.data.network.ApiService
 import io.reactivex.disposables.Disposable
 
 class AppRepoImp(
-    val appRepository: AppRepository,
+    val apiService: ApiService,
     val database: AppDatabase
 ):AppRepository {
     override fun getArticles(
