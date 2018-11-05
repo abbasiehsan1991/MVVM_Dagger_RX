@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">MVVM With Dagger</string>
+    <string name="app_name">News</string>
+	
+	<string name="text_author">Author: %s</string>
+	<string name="text_title">Title: %s</string>
+	<string name="text_publisged_at">Date: %s</string>
+	<string name="text_description">Description: %s</string>
+	<string name="no_author">Author not found!!!</string>
+	<string name="text_no_title">Title not found!!!</string>
+	<string name="text_no_description">Description not found!!!</string>
+	<string name="text_no_url">URL not found!!!</string>
+	<string name="text_no_date">date not found!!!</string>
+	<string name="error_faild_get_data">Error while loading Data! Please try again later.</string>
+	
+	<string name="api_no_data_response">No data in response.</string>
+	<string name="api_error_in_connecting_to_server">Error in connecting to the server.</string>
+	<string name="api_error_bad_response">Error in getting response</string>
+	<string name="api_error_time_out">Time out error.</string>
+	<string name="api_error_not_defined">An unexpected error happened!</string>
+	
+	
+	
 </resources>

@@ -1,24 +1,22 @@
 package codenevisha.ir.mvvmwithdagger.data.network
 
+import codenevisha.ir.mvvmwithdagger.R
+
 data class ApiError(
     val status: ApiStatus,
     val code: Int = -1,
-    var message: String = "") {
+    var message: String=""
+) {
+    fun getApiErrorMessage(status: ApiStatus): Int {
 
-    fun getErrorMessage(): String {
-
-        if (message.isEmpty()) {
-
-            message = when (status) {
-                ApiStatus.EMPTY_RESPONSE -> "No data in response."
-                ApiStatus.NO_CONNECTION -> "Error in connecting to the server."
-                ApiStatus.BAD_RESPONSE -> "Error in getting response."
-                ApiStatus.TIMEOUT -> " Time out  error."
-                ApiStatus.NOT_DEFINED -> "An unexpected error happened!"
-            }
+        return when (status) {
+            ApiStatus.EMPTY_RESPONSE -> R.string.api_no_data_response
+            ApiStatus.NO_CONNECTION -> R.string.api_error_in_connecting_to_server
+            ApiStatus.BAD_RESPONSE -> R.string.api_error_bad_response
+            ApiStatus.TIMEOUT -> R.string.api_error_time_out
+            ApiStatus. NOT_DEFINED -> R.string.api_error_not_defined
         }
 
-        return message
     }
 
     enum class ApiStatus {

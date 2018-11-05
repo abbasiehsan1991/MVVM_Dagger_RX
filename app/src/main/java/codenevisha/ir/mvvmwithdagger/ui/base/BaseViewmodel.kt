@@ -12,4 +12,7 @@ abstract class BaseViewmodel : ViewModel(), LifecycleObserver {
         super.onCleared()
         compositeDisposable.clear()
     }
+
+
+
 }
