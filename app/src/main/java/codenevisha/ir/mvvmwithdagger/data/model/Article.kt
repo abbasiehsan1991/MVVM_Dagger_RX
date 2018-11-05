@@ -1,5 +1,6 @@
 package codenevisha.ir.mvvmwithdagger.data.model
 
+import android.arch.persistence.room.Embedded
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
@@ -22,10 +23,9 @@ data class Article(
     @SerializedName("url") var url: String?,
     @SerializedName("urlToImage") var urlToImage: String?,
     @SerializedName("publishedAt") var publishedAt: String?,
-    @SerializedName("content") var content: String?
-
-    //@Embedded
-    //@SerializedName("source") var source: Source
+    @SerializedName("content") var content: String?,
+    @Embedded
+    @SerializedName("source") var source: Source
 ) {
     var atricleAuthor = "Author: $author"
 }
@@ -33,6 +33,4 @@ data class Article(
 class Source constructor(
     @SerializedName("id") var sourceId: String?,
     @SerializedName("name") var sourceNname: String?
-){
-
-}
+)
